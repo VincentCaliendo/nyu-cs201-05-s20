@@ -1,0 +1,10 @@
+1. The registers are not being saved because they're being popped of the stack in the wrong order. A stack is last in first out.
+2. When who is being called, there is no register being pushed onto the stack for the program to pick up from when who returns.
+3.
+  a.
+    comp = 39 bytes
+    comp2 = 20 bytes
+    comp3 = 30 bytes
+
+  b.
+  
