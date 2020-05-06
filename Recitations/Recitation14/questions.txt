@@ -1,22 +1,23 @@
 1. Assume an empty cache with configuration S=16, B=16, E=1 (direct mapped). Empty cache means all v bits are 0.
    A series of instructions are executed on the CPU which access the memory at the following addresses.
-   11011110000
-   11011110100
-   10111110110
-   10010011111
-   10010010101
-   10111110000
+   110 1111 0000 Miss *cold start
+   110 1111 0100 hit
+   101 1111 0110 Miss
+   100 1001 1111 Miss
+   100 1001 0101 hit
+   101 1111 0000 hit
 
    All addresses are in binary. For each address, specify whether it leads to a cache miss or a hit. 
 
+The first instruction would lead to a miss because at the beginning of the program the cache is completely empty. Becuase we allocate the memory in the cache following a miss, the rest of the data in the same set will be loaded in. For the following two instructions, the first will lead to a hit becuase the tag is the same. However the second instruciton would lead to a miss becuase all though the set index is the same, the tag is different. The 4th instruction will lead to a miss becuase that set was not loded into the cache. However the instruction after will be found becuase the set and tag are equal. The final instruction would lead to a hit becuase the set is already in the cache, and the tag is also in the cache. I used the rules illustrated in the recitation14 slides to determine hit or miss. "Find corresponding set and check if valid bit is set. If yes, compare tags. If they match -> hit. If they dont match, or valid bit not set -> miss."
 
 2. Assume an empty cache with configuration S=16, B=16, E=2 (two-way mapping). Empty cache means all v bits are 0.
    A series of instructions are executed on the CPU which access the memory at the following addresses.
-   11011110000
-   10111110100
-   10010011111
-   11011110111
-   10010110101
-   11111110110
+   110 1111 0000 miss *cold start
+   101 1111 0100 miss
+   100 1001 1111 miss
+   110 1111 0111 hit
+   100 1011 0101 miss
+   111 1111 0110 hit
 
    All addresses are in binary. For each address, specify whether it leads to a cache miss or a hit. Cache replacement policy = LRU
